@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eXtensible Markup Language</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: beige;
+            color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: orange;
+            margin-top: 20px;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: orange;
+        }
+        .navigation {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+        }
+        .next {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
+		
+		
+	
+	</style>
+</head>
+<body>
+
+<p>
+<span><i>
+	UNIVERSIDAD AUTONOMA DE SANTO DOMINGO<br>
+	Escuela de Informatica<br>
+	Alexander Solano de la Cruz,	AB5972<br>
+	<br>
+</i></span>
+  </p>
+  
+
+<br>
+
+
+<div class="container" id="content">
+    <h1>eXtensible Markup Language</h1>
+    <div id="page"></div>
+</div>
+
+<div class="navigation">
+    <button class="button" id="back" onclick="navigate(-1)">Atrás</button>
+</div>
+<div class="next">
+    <button class="button" id="next" onclick="navigate(1)">Adelantar</button>
+</div>
+
+<script>
+    const pages = [
+        {
+            title: "XML Introducción",
+            content: ` 
+
+ 
+¿Qué es XML?
+<br>
+<br>
+XML es el acrónimo de Extensible Markup Language, es decir, es un lenguaje de marcado que define un conjunto de reglas para la codificación de documentos. ¿Te parece complicado? Entonces, vamos a simplificarlo.
+<br><br>
+El lenguaje de marcado es un conjunto de códigos que se pueden aplicar en el análisis de datos o la lectura de textos creados por computadoras o personas. 
+<br><br>
+El lenguaje XML proporciona una plataforma para definir elementos para crear un formato y generar un lenguaje personalizado.
+<br><br>
+Un archivo XML se divide en dos partes: prolog y body. La parte prolog consiste en metadatos administrativos, como declaración XML, instrucción de procesamiento opcional, declaración de tipo de documento y comentarios. La parte del body se compone de dos partes: estructural y de contenido (presente en los textos simples).
+<br><br>
+
+El diseño XML se centra en la simplicidad, la generalidad y la facilidad de uso y, por lo tanto, se utiliza para varios servicios web. Tanto es así que hay sistemas destinados a ayudar en la definición de lenguajes basados ​​en XML, así como APIs que ayudan en el procesamiento de datos XML - que no deben confundirse con HTML. `
+        },
+        {
+            title: "Diferencias entre XML y HTML ",
+            content: `El XML es un lenguaje de marcado basado en texto que tiene una estructura de auto-descripción y puede definir efectivamente otro lenguaje de marcado. Por otro lado, el HTML es un lenguaje de mrcado predefinido y tiene una capacidad limitada;
+<br><br>
+El XML proporciona la estructura lógica del documento, mientras que la estructura del HTML está predefinida, utilizando tags heads e body;
+<br><br>
+Cuando se trata de lenguaje, el HTML es insensible a mayúsculas y minúsculas. En cambio, el XML distingue entre mayúsculas y minúsculas;
+<br><br>
+El HTML fue diseñado con un énfasis en las características de presentación de los datos. En contraste, el XML es específico de datos;
+<br><br>
+El XML no permite ningún error en el código. En contraste, en el HTML, pequeños errores pueden ser descuidados;
+<br><br>
+Los espacios en blanco en el XML se utilizan para un fin específico, pues considera todos los caracteres el HTML, en cambio puede ignorar espacios en blanco;
+<br><br>
+Las tags de XML están necesariamente cerradas, mientras que en HTML una etiqueta abierta también puede funcionar bastante bien;
+En XML la sintaxis es de gran importancia. El HTML, por otro lado, no se preocupa mucho por este aspecto
+.
+          `
+        },
+        {
+            title: "¿Cuáles son las características XML? ",
+            content: ` <i>El XML separa datos de HTML</i>
+<br><br>
+Si necesitas mostrar datos dinámicos en tu documento HTML, tendrás que dedicarle mucho trabajo a editarlos cada vez que los datos cambien. Con el XML, los datos se pueden almacenar en archivos XML separados. De esa manera, puedes usar HTML para la visualización y el diseño.
+<br><br>
+Con algunas líneas de código JavaScript, puedes leer un archivo XML externo y actualizar el contenido de los datos de tu página web.
+<br><br>
+<i>XML simplifica el intercambio de datos</i>
+<br><br>
+Tanto los sistemas informáticos como las bases de datos contienen información en formatos incompatibles.
+<br><br>
+Los datos XML se almacenan en formato de texto simple, lo que nos posibilita una forma independiente de almacenar datos. Esto facilita mucho la creación de datos que pueden ser compartidos por diferentes aplicaciones.	
+		
+           `
+        },
+        {
+            title: "XML simplifica el intercambio de datos ",
+            content: ` Uno de los desafíos más difíciles para los desarrolladores es intercambiar datos entre sistemas incompatibles a través de Internet. El intercambio de datos como XML reduce en gran medida esta complejidad porque los datos pueden ser leídos por diferentes aplicaciones incompatibles.
+		  
+			`
+        },
+        {
+            title: "XML simplifica el cambio de plataforma ",
+            content: `
+			La actualización a nuevos sistemas (plataformas de hardware o software) lleva mucho tiempo. Se deben convertir grandes cantidades de datos y los datos incompatibles a menudo se pierden.
+			<br><br>
+			Los datos XML se almacenan en formato de texto. Esto facilita la expansión o actualización a nuevos sistemas de información, nuevas aplicaciones o nuevos navegadores sin pérdida de datos.
+             `
+        },
+        {
+            title: "El XML aumenta la disponibilidad de datos",
+            content: `
+			Diferentes aplicaciones pueden acceder a tus datos, no solo en páginas HTML, sino también en fuentes de datos XML.
+			<br><br>
+			Con el XML, tus datos pueden estar disponibles para todos los tipos de "máquinas de lectura" (computadoras de mano, máquinas de voz, feeds de noticias, etc.) y, además, facilita la accesibilidad para personas con capacidades diferentes, por ejemplo no videntes.
+			<br><br>
+			<i>El XML se puede utilizar para crear nuevos idiomas de Internet</i>
+			<br><br>
+Muchos idiomas nuevos en Internet son creados con XML. Aquí hay algunos ejemplos:
+<br><br>
+    XHTML;
+    WSDL;
+    WAP y WML;
+    RSS (utilizado en noticias);
+    RDF y OWL;
+    SMIL.
+            `
+        },
+        {
+            title: "Críticas ",
+            content: ` 
+				XML y sus extensiones han sido regularmente criticadas por su nivel de detalle y complejidad.3​ El mapeo del modelo de árbol básico de XML hacia los sistema de tipos de lenguajes de programación o bases de datos puede ser difícil, especialmente cuando se utiliza XML para el intercambio de datos altamente estructurados entre aplicaciones, lo que no era su objetivo primario de diseño. 
+				<br><br>
+				Otras críticas intentan refutar la afirmación de que XML es un lenguaje autodescriptivo4​ (aunque la especificación XML no hace ninguna afirmación de este tipo). Se propone a JSON y YAML frecuentemente como alternativas, centrándose ambas en la representación de datos estructurados, en lugar de documentos narrativos. 
+			
+		<pre>
+			
+				</pre>
+           `
+        },
+        
+        
+        { 
+            title: "Ventajas del XML", 
+            content: `  
+				Es extensible: Después de diseñado y puesto en producción, es posible extender XML con la adición de nuevas etiquetas, de modo que se pueda continuar utilizando sin complicación alguna.
+<br><br>
+El analizador es un componente estándar, no es necesario crear un analizador específico para cada versión de lenguaje XML. Esto posibilita el empleo de cualquiera de los analizadores disponibles. De esta manera se evitan bugs y se acelera el desarrollo de aplicaciones.
+<br><br>
+Si un tercero decide usar un documento creado en XML, es sencillo entender su estructura y procesarla. Mejora la compatibilidad entre aplicaciones. Podemos comunicar aplicaciones de distintas plataformas, sin que importe el origen de los datos, es decir, podríamos tener una aplicación en Linux con una base de datos Postgres y comunicarla con otra aplicación en Windows y base de datos MS-SQL Server.
+<br><br>
+Transformamos datos en información, pues se les añade un significado concreto y los asociamos a un contexto, con lo cual tenemos flexibilidad para estructurar documentos
+				` 
+        }, 
+		
+		{ 
+             title: "Estructura de un documento XML", 
+             content: `  
+			La tecnología XML busca dar solución al problema de expresar información estructurada de la manera más abstracta y reutilizable posible. Que la información sea estructurada quiere decir que se compone de partes bien definidas, y que esas partes se componen a su vez de otras partes. Entonces se tiene un árbol de trozos de información. Ejemplos son un tema musical, que se compone de compases, que están formados a su vez por notas. Estas partes se llaman elementos, y se las señala mediante etiquetas.
+<br><br>
+Una etiqueta consiste en una marca hecha en el documento, que señala una porción de este como un elemento. Un pedazo de información con un sentido claro y definido. Las etiquetas tienen la forma <nombre>, donde nombre es el nombre del elemento que se está señalando.
+<br><br>
+A continuación se muestra un ejemplo para entender la estructura de un documento XML: 	
+<br>					 
+<pre>
+ 		
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Edit_Mensaje SYSTEM "Edit_Mensaje.dtd">
+
+<Edit_Mensaje>
+     <Mensaje>
+          <Remitente>
+               <Nombre>Nombre del remitente</Nombre>
+               <Mail> Correo del remitente </Mail>
+          </Remitente>
+          <Destinatario>
+               <Nombre>Nombre del destinatario</Nombre>
+               <Mail>Correo del destinatario</Mail>
+          </Destinatario>
+          <Texto>
+               <Asunto>
+                    Este es mi documento con una estructura muy sencilla 
+                    no contiene atributos ni entidades...
+               </Asunto>
+               <Parrafo>
+                    Este es mi documento con una estructura muy sencilla 
+                    no contiene atributos ni entidades...
+               </Parrafo>
+          </Texto>
+     </Mensaje>
+</Edit_Mensaje> 
+
+	
+	</pre>
+            ` 
+        } 
+    ];
+
+    let currentPage = 0;
+
+    function loadPage() {
+        const pageDiv = document.getElementById('page');
+        const { title, content } = pages[currentPage];
+
+        pageDiv.innerHTML = `<h2>${title}</h2>${content}`;
+
+        // Actualizar visibilidad de botones
+        document.getElementById('back').style.display = currentPage === 0 ? 'none' : 'block';
+        document.getElementById('next').innerText = currentPage === pages.length - 1 ? 'Cerrar Aplicación' : 'Adelantar';
+    }
+
+    function navigate(direction) {
+        if (direction === 1) {
+            if (currentPage === pages.length - 1) {
+                window.close(); // Cierra la ventana si es la última página
+            } else {
+                currentPage++;
+            }
+        } else {
+            currentPage--;
+        }
+        loadPage();
+    }
+
+    // Cargar la página inicial
+    loadPage();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
